@@ -15,6 +15,7 @@ class NoticiasPage extends StatelessWidget {
             fecha: '30 nov, 2023',
             contenido:
                 'No te quedes estancado, ven y aprovecha los descuentos antes de que acabe el año y matriculate, aspira a grandes metas el proximo año.',
+           
           ),
           NoticiaCard(
             titulo: 'Final de semana de examenes',
@@ -39,6 +40,7 @@ class NoticiaCard extends StatelessWidget {
   final String titulo;
   final String fecha;
   final String contenido;
+  
 
   const NoticiaCard({
     required this.titulo,
