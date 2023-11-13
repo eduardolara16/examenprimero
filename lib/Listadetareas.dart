@@ -24,6 +24,7 @@ class ListaTareasPage extends StatelessWidget {
             url: 'https://example.com',
           ),
 
+
           SizedBox(height: 16.0),
           TareaCard(
             nombre: 'Quimica',
@@ -38,6 +39,7 @@ class ListaTareasPage extends StatelessWidget {
             fecha: '6 nov, 2023',
             url: 'https://example.com',
           ),
+
           SizedBox(height: 16.0),
           TareaCard(
             nombre: 'Biologia',
@@ -45,6 +47,7 @@ class ListaTareasPage extends StatelessWidget {
             fecha: '4 nov, 2023',
             url: 'https://example.com',
           ),
+
           SizedBox(height: 16.0),
           TareaCard(
             nombre: 'Ingles',
@@ -52,6 +55,7 @@ class ListaTareasPage extends StatelessWidget {
             fecha: '4 nov, 2023',
             url: 'https://example.com',
           ),
+          
           // Agrega m s ejemplos seg n sea necesario
         ],
       ),
@@ -65,12 +69,14 @@ class TareaCard extends StatelessWidget {
   final String fecha;
   final String url;
 
+
   const TareaCard({
     required this.nombre,
     required this.descripcion,
     required this.fecha,
     required this.url,
   });
+
 
   @override
   Widget build(BuildContext context) {

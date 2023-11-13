@@ -1,35 +1,37 @@
 import 'package:flutter/material.dart';
-
 class NoticiasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Noticias'),
+        title: Text('Historial de noticias'),
+        backgroundColor: Colors.blue, // Example color
       ),
       body: ListView(
         padding: EdgeInsets.all(16.0),
         children: [
           NoticiaCard(
-            titulo: 'Matricula Abierta',
+            titulo: 'Matricula abierta',
             fecha: '30 nov, 2023',
             contenido:
-                'No te quedes estancado, ven y aprovecha los descuentos antes de que acabe el año y matriculate, aspira a grandes metas el proximo año.',
-           
+                'Matriculate ya para este Q1 del 2024.',
+            imagenUrl:
+                'https://nidobrighton.com/wp-content/uploads/2019/11/matricula-abierta-1.png', // Reemplaza con tu URL de imagen
           ),
+          // Add three more NoticiaCard widgets
           NoticiaCard(
-            titulo: 'Final de semana de examenes',
+            titulo: 'Fin de semana de examenes',
             fecha: '13 nov, 2023',
-            contenido:
-                'Damos por concluida la semana de examenes, esperamos les haya ido muy bien.',
+            contenido: 'Enhorabuena, felicidades por haber culminado tus examenes.',
+            imagenUrl: 'https://www.pikpng.com/pngl/m/526-5263364_felicidades-palavra-felicidades-clipart.png',
           ),
-          SizedBox(height: 16.0),
           NoticiaCard(
-            titulo: 'Semana de examenes',
-            fecha: '05 nov, 2023',
-            contenido:
-                'Damos inicio una vez a la semana de examenes tan esperada a la mitad del periodo, mas cerca que nunca, estudia y tendras exito.',
+            titulo: 'Inicio de semana de examenes',
+            fecha: '05nov, 2023',
+            contenido: 'Exitos en esta semana de examenes.',
+            imagenUrl: 'https://448654bc54.cbaul-cdnwnd.com/e19c38581a5a4e1d1fa1ffcd846c9ea6/system_preview_detail_200000097-1db881eb36-public/Que%20significa%20tener%20exito.png',
           ),
+          
         ],
       ),
     );
@@ -40,12 +42,13 @@ class NoticiaCard extends StatelessWidget {
   final String titulo;
   final String fecha;
   final String contenido;
-  
+  final String? imagenUrl; // Nueva propiedad para la URL de la imagen
 
   const NoticiaCard({
     required this.titulo,
     required this.fecha,
     required this.contenido,
+    this.imagenUrl, // Parámetro opcional para la URL de la imagen
   });
 
   @override
@@ -57,6 +60,14 @@ class NoticiaCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (imagenUrl != null)
+              Image.network(
+                imagenUrl!,
+                height: 150.0,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            SizedBox(height: 8.0),
             Text(
               titulo,
               style: TextStyle(
@@ -72,58 +83,15 @@ class NoticiaCard extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 16.0),
+            Divider(color: Colors.grey), // Divider for visual separation
+            SizedBox(height: 8.0),
             Text(
               contenido,
               style: TextStyle(fontSize: 16.0),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Noticias extends StatelessWidget {
-  final List<Noticia> noticias;
-
-  const Noticias({Key? key, required this.noticias}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Noticias'),
-      ),
-      body: ListView.builder(
-        itemCount: noticias.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: Column(
-              children: [
-                Image.network(noticias[index].imagenUrl),
-                Text(noticias[index].titulo),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(noticias[index].descripcion),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class Noticia {
-  final String titulo;
-  final String descripcion;
-  final String imagenUrl;
-
-  Noticia({
-    required this.titulo,
-    required this.descripcion,
-    required this.imagenUrl,
-  });
+     ),
+  );
+ }
 }
