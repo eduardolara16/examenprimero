@@ -4,7 +4,7 @@ class NoticiasPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Historial de noticias'),
+        title: Text('Noticias'),
         backgroundColor: Colors.blue, // Example color
       ),
       body: ListView(

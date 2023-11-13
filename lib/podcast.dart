@@ -12,7 +12,17 @@ class PodcastApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Podcasts'),
+          title: Row(
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context); // Regresar al menú principal
+                },
+              ),
+              Text('Podcasts'),
+            ],
+          ),
         ),
         body: Column(
           children: [
@@ -30,13 +40,13 @@ class PodcastApp extends StatelessWidget {
                   onPressed: () {
                     // Lógica para agregar música
                   },
-                  child: Text('Agregar música'),
+                  child: Text('Agregar'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     // Lógica para controlar el volumen
                   },
-                  child: Text('Volumen'),
+                  child: Text('Eliminar'),
                 ),
               ],
             ),
@@ -52,6 +62,9 @@ class PodcastApp extends StatelessWidget {
     );
   }
 }
+
+// Resto del código permanece igual
+
 
 class PodcastCard extends StatelessWidget {
   final String artista;
@@ -115,17 +128,23 @@ class AudioControls extends StatelessWidget {
         children: [
           IconButton(
             icon: Icon(Icons.skip_previous),
-            onPressed: () {},
+            onPressed: () {
+              // Lógica para retroceder la música
+            },
             iconSize: 50.0,
           ),
           IconButton(
             icon: Icon(Icons.play_arrow),
-            onPressed: () {},
+            onPressed: () {
+              // Lógica para reproducir la música
+            },
             iconSize: 120.0,
           ),
           IconButton(
             icon: Icon(Icons.fast_forward),
-            onPressed: () {},
+            onPressed: () {
+              // Lógica para avanzar la música
+            },
             iconSize: 50.0,
           ),
         ],
@@ -133,8 +152,6 @@ class AudioControls extends StatelessWidget {
     );
   }
 }
-
-
 
 class AudioProgressBar extends StatelessWidget {
   @override
@@ -147,15 +164,10 @@ class AudioProgressBar extends StatelessWidget {
             value: 0.5,
           ),
         ],
-    ),
-   );
+      ),
+    );
   }
 }
-
-
-
-
-
 
 class AudioOptions extends StatelessWidget {
   @override
@@ -168,17 +180,14 @@ class AudioOptions extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Checkbox(
-                    value: true,
-                    onChanged: (value) {},
-                  ),
-                  SizedBox(width: 8.0),
-                  Text('Repeat', style: TextStyle(fontSize: 16.0)),
-                ],
+              Text('Repeat', style: TextStyle(fontSize: 16.0)),
+              Spacer(), // Esto coloca Repeat en la izquierda y el control en la derecha
+              Checkbox(
+                value: true,
+                onChanged: (value) {
+                  // Lógica para habilitar/deshabilitar la repetición
+                },
               ),
-              Spacer(),
             ],
           ),
           SizedBox(height: 8.0),
@@ -187,23 +196,20 @@ class AudioOptions extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {},
-                  ),
-                  SizedBox(width: 8.0),
-                  Text('Shuffle', style: TextStyle(fontSize: 16.0)),
-                ],
+              Text('Shuffle', style: TextStyle(fontSize: 16.0)),
+              Spacer(), // Esto coloca Shuffle en la izquierda y el control en la derecha
+              Checkbox(
+                value: false,
+                onChanged: (value) {
+                  // Lógica para habilitar/deshabilitar el modo aleatorio
+                },
               ),
-              Spacer(),
             ],
           ),
           SizedBox(height: 8.0),
           Divider(thickness: 4.0),
         ],
-     ),
-   );
- }
+      ),
+    );
+  }
 }
